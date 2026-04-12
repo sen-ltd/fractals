@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fractal Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Canvas -->
+    <div id="canvas-wrap">
+      <canvas id="canvas"></canvas>
+      <div id="loading" style="display:none">
+        <span data-i18n="loading">Rendering...</span>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <header>
+        <h1 data-i18n="title">Fractal Visualizer</h1>
+        <button id="btn-lang" class="btn-icon" title="Switch language">EN</button>
+      </header>
+
+      <!-- Fractal type -->
+      <section class="control-group">
+        <label data-i18n="fractalType">Fractal Type</label>
+        <select id="select-fractal">
+          <option value="mandelbrot" data-i18n="mandelbrot">Mandelbrot Set</option>
+          <option value="julia" data-i18n="julia">Julia Set</option>
+          <option value="burningShip" data-i18n="burningShip">Burning Ship</option>
+        </select>
+      </section>
+
+      <!-- Julia C parameter -->
+      <section class="control-group" id="julia-c-row" style="display:none">
+        <label data-i18n="juliaC">Julia constant c</label>
+        <div class="input-row">
+          <label class="small">Re</label>
+          <input type="number" id="julia-cx" value="-0.7" step="0.01" />
+          <label class="small">Im</label>
+          <input type="number" id="julia-cy" value="0.27015" step="0.01" />
+        </div>
+      </section>
+
+      <!-- Color palette -->
+      <section class="control-group">
+        <label data-i18n="palette">Color Palette</label>
+        <select id="select-palette">
+          <option value="classic" data-i18n="classic">Classic Rainbow</option>
+          <option value="fire" data-i18n="fire">Fire</option>
+          <option value="cool" data-i18n="cool">Cool Blue</option>
+          <option value="grayscale" data-i18n="grayscale">Grayscale</option>
+          <option value="psychedelic" data-i18n="psychedelic">Psychedelic</option>
+        </select>
+      </section>
+
+      <!-- Max iterations -->
+      <section class="control-group">
+        <label>
+          <span data-i18n="maxIterations">Max Iterations</span>
+          <span id="label-iter" class="value-badge">100</span>
+        </label>
+        <input type="range" id="slider-iter" min="50" max="500" step="10" value="100" />
+      </section>
+
+      <!-- Coordinates -->
+      <section class="control-group coord-group">
+        <label data-i18n="coordinates">Coordinates</label>
+        <div class="coord-row">
+          <span data-i18n="center">Center</span>
+          <span id="coord-center" class="mono">(-0.500000, 0.000000)</span>
+        </div>
+        <div class="coord-row">
+          <span data-i18n="zoom">Zoom</span>
+          <span id="coord-zoom" class="mono">5.000e-1</span>
+        </div>
+      </section>
+
+      <!-- Presets -->
+      <section class="control-group">
+        <label data-i18n="presets">Presets</label>
+        <div id="presets" class="presets-grid"></div>
+      </section>
+
+      <!-- Actions -->
+      <section class="action-group">
+        <button id="btn-reset" class="btn-secondary">
+          <span data-i18n="resetView">Reset View</span>
+        </button>
+        <button id="btn-export" class="btn-primary">
+          <span data-i18n="exportPng">Export PNG</span>
+        </button>
+      </section>
+
+      <footer>
+        <p class="help" data-i18n="helpZoom">Scroll to zoom / Drag to pan / Shift+drag to select</p>
+      </footer>
+    </aside>
+  </div>
+
+  <script type="module">
+    import { init } from './src/main.js';
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

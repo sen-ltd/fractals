@@ -68,3 +68,10 @@ fractals/
 ## License
 
 MIT — Copyright (c) 2026 SEN LLC (SEN 合同会社)
+
+<!-- sen-publish:links -->
+## Links
+
+- 🌐 Demo: https://sen.ltd/portfolio/fractals/
+- 📝 dev.to: https://dev.to/sendotltd/mandelbrot-julia-and-burning-ship-fractals-in-a-progressive-render-canvas-ic2
+<!-- /sen-publish:links -->
